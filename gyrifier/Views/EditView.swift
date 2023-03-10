@@ -8,44 +8,53 @@
 import SwiftUI
 import CoreData
 
-struct ContentView: View {
+struct EditView: View {
     @Environment(\.managedObjectContext) private var viewContext
 
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
+        sortDescriptors: [NSSortDescriptor(keyPath: \Card.dateCreated, ascending: true)],
         animation: .default)
-    private var items: FetchedResults<Item>
+    private var cards: FetchedResults<Card>
 
     var body: some View {
         NavigationView {
             List {
-                ForEach(items) { item in
+                ForEach(cards) { card in
                     NavigationLink {
-                        Text("Item at \(item.timestamp!, formatter: itemFormatter)")
+                        DetailView(currentCard: card)
+                            .environment(\.managedObjectContext, viewContext)
                     } label: {
-                        Text(item.timestamp!, formatter: itemFormatter)
+                        Text("\(card.cardFront!) \(card.dateCreated!, formatter: itemFormatter)")
                     }
+                    .navigationTitle("Edit Deck")
+                    .navigationBarTitleDisplayMode(.inline)
                 }
-                .onDelete(perform: deleteItems)
+                .onDelete(perform: deleteCards)
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     EditButton()
                 }
                 ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
+                    Button(action: addCard) {
+                        Label("Add Card", systemImage: "plus")
                     }
                 }
             }
-            Text("Select an item")
+            Text("Select a card")
         }
     }
 
-    private func addItem() {
+    // TODO: Fix re-declaration here, too
+    private func addCard() {
         withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
+            let newCard = Card(context: viewContext)
+            newCard.dateCreated = Date()
+            newCard.dateUpdated = Date()
+            newCard.dateLastSeen = Date(timeIntervalSinceReferenceDate: 0)
+            newCard.cardFront = "Card Front"
+            newCard.cardBack = "Card Back"
+            newCard.cardHint = ""
 
             do {
                 try viewContext.save()
@@ -58,9 +67,9 @@ struct ContentView: View {
         }
     }
 
-    private func deleteItems(offsets: IndexSet) {
+    private func deleteCards(offsets: IndexSet) {
         withAnimation {
-            offsets.map { items[$0] }.forEach(viewContext.delete)
+            offsets.map { cards[$0] }.forEach(viewContext.delete)
 
             do {
                 try viewContext.save()
@@ -74,6 +83,7 @@ struct ContentView: View {
     }
 }
 
+// TODO: Fix this re-declaration
 private let itemFormatter: DateFormatter = {
     let formatter = DateFormatter()
     formatter.dateStyle = .short
@@ -81,8 +91,8 @@ private let itemFormatter: DateFormatter = {
     return formatter
 }()
 
-struct ContentView_Previews: PreviewProvider {
+struct EditView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        EditView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }

@@ -5,12 +5,6 @@
 //  Created by   on 3/3/23.
 //
 
-// TODO: 3/06
-// - [x] Update "lastSeen" when flipping through cards
-// - [x] Fix Navigation view nested stuff
-// - [x] Plan/design the project a bit
-// - [ ] Create new add card logic
-
 import SwiftUI
 
 struct HomeView: View {
@@ -30,7 +24,9 @@ struct HomeView: View {
                         Text("The Deck")
                             .fontWeight(.bold)
                         NavigationLink {
-                            ReviewView()
+                            // TODO: Change from hard-coding to screen w/ selection
+                            // Currently set to 1 minute review
+                            ReviewView(timeLimit: 60.0)
                                 .environment(\.managedObjectContext, viewContext)
                         } label: {
                             Text("Review")

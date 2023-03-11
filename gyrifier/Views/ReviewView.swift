@@ -9,11 +9,16 @@ import SwiftUI
 
 struct ReviewView: View {
     @Environment(\.managedObjectContext) private var viewContext
-
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Card.dateCreated, ascending: true)],
         animation: .default)
     private var cards: FetchedResults<Card>
+    
+    let timeLimit: Double
+    
+    @State var reviewTime = 0.0
+    @State var isOvertime = false
+    @State var timer: Timer?
     @State var shuffledCards: [Card] = []
     @State var isFlipped = false
     @State var isFinished = false
@@ -76,6 +81,7 @@ struct ReviewView: View {
             //.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .center)
             .onAppear() {
                 startIteration()
+                startTimer()
             }
         }
     }
@@ -94,12 +100,17 @@ struct ReviewView: View {
     private func iterateCards() {
         currentIndex += 1
         updateCardLastSeen(card: currentCard)
-        if currentIndex < cards.count {
+        if (isOvertime || currentIndex >= cards.count) {
+            finishReview()
+        } else {
             currentCard = shuffledCards[currentIndex]
             toggleFlip()
-        } else {
-            isFinished = true
         }
+    }
+    
+    private func finishReview() {
+        isFinished = true
+        timer?.invalidate()
     }
     
     private func toggleFlip() {
@@ -121,10 +132,21 @@ struct ReviewView: View {
             }
         }
     }
+    
+    private func startTimer() {
+        if timeLimit != -1.0 {
+            timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
+                reviewTime += 0.1
+                if (reviewTime > timeLimit) {
+                    isOvertime = true
+                }
+            }
+        }
+    }
 }
 
 struct ReviewView_Previews: PreviewProvider {
     static var previews: some View {
-        ReviewView()
+        ReviewView(timeLimit: 300.0)
     }
 }

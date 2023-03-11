@@ -14,6 +14,7 @@ struct ReviewView: View {
         sortDescriptors: [NSSortDescriptor(keyPath: \Card.dateCreated, ascending: true)],
         animation: .default)
     private var cards: FetchedResults<Card>
+    @State var shuffledCards: [Card] = []
     @State var isFlipped = false
     @State var isFinished = false
     @State var isLoading = true
@@ -83,8 +84,9 @@ struct ReviewView: View {
         if (cards.isEmpty) {
             isFinished = true
         } else {
-            currentCard = cards[0]
+            shuffledCards = cards.shuffled()
             currentIndex = 0
+            currentCard = shuffledCards[currentIndex]
             isLoading = false
         }
     }
@@ -93,7 +95,7 @@ struct ReviewView: View {
         currentIndex += 1
         updateCardLastSeen(card: currentCard)
         if currentIndex < cards.count {
-            currentCard = cards[currentIndex]
+            currentCard = shuffledCards[currentIndex]
             toggleFlip()
         } else {
             isFinished = true

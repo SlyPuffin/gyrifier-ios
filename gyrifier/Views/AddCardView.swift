@@ -7,18 +7,9 @@
 
 import SwiftUI
 
-//public func gesture<T>(_ gesture: T, including mask: GestureMask = .all) -> some View where T : Gesture
-extension View {
-    func hideKeyboardWhenTappedAround() -> some View  {
-        return self.onTapGesture {
-            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder),
-                  to: nil, from: nil, for: nil)
-        }
-    }
-}
-
 struct AddCardView: View {
     @Environment(\.managedObjectContext) private var viewContext
+    @EnvironmentObject var navigator: Navigator
     
     let savedText = "Card added to deck!"
     @State var errorText = "Please input text for both the front and back of the card."
@@ -28,10 +19,21 @@ struct AddCardView: View {
     @State var isSaved = false
 
     var body: some View {
-        VStack {
+        HStack {
+            Button {
+                navigator.changeView(nextView: .home)
+            } label: {
+                Text("Back")
+                    .buttonStyle(.borderedProminent)
+            }
+            .padding()
+            Spacer()
             Button("Save Card", action: saveNewCard)
                 .buttonStyle(.borderedProminent)
-                .padding(.bottom)
+                .padding()
+        }
+        .padding(.bottom)
+        VStack {
             if (isError || isSaved) {
                 Text(isError ? errorText : savedText)
                     .foregroundColor(isError ? .red : .green)

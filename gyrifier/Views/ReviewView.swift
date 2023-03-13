@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ReviewView: View {
     @Environment(\.managedObjectContext) private var viewContext
+    @EnvironmentObject var navigator: Navigator
+
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Card.dateCreated, ascending: true)],
         animation: .default)
@@ -27,6 +29,16 @@ struct ReviewView: View {
     @State var currentCard: Card = Card()
     
     var body: some View {
+        HStack {
+            Button {
+                navigator.changeView(nextView: .home)
+            } label: {
+                Text("Back")
+            }
+            .padding()
+            Spacer()
+        }
+        Spacer()
         if isFinished {
             VStack(alignment: .center) {
                 HStack(alignment: .center) {
@@ -78,11 +90,13 @@ struct ReviewView: View {
                             .stroke(.blue, lineWidth: 2)
                     )
             }
-            //.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .center)
             .onAppear() {
                 startIteration()
                 startTimer()
             }
+            Spacer()
+            /// For debugging:
+            //Text("\(reviewTime) / \(timeLimit)")
         }
     }
     

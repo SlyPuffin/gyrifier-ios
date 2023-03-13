@@ -20,6 +20,9 @@
 		002BF17129B264F200AA6D15 /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002BF17029B264F200AA6D15 /* ReviewView.swift */; };
 		006F189D29B64EEB00740543 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006F189C29B64EEB00740543 /* DetailView.swift */; };
 		006F189F29B6591200740543 /* AddCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006F189E29B6591200740543 /* AddCardView.swift */; };
+		00D31FD929BF7FAE0007EA83 /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D31FD829BF7FAE0007EA83 /* Navigator.swift */; };
+		00D31FDD29BF84270007EA83 /* HomePopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D31FDC29BF84270007EA83 /* HomePopup.swift */; };
+		00D31FDF29BFA06A0007EA83 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D31FDE29BFA06A0007EA83 /* ViewExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +60,9 @@
 		002BF17029B264F200AA6D15 /* ReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
 		006F189C29B64EEB00740543 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		006F189E29B6591200740543 /* AddCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardView.swift; sourceTree = "<group>"; };
+		00D31FD829BF7FAE0007EA83 /* Navigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
+		00D31FDC29BF84270007EA83 /* HomePopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePopup.swift; sourceTree = "<group>"; };
+		00D31FDE29BFA06A0007EA83 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +113,7 @@
 		000BF80329A83F3D00F4C33D /* gyrifier */ = {
 			isa = PBXGroup;
 			children = (
+				00D31FD729BF7FA20007EA83 /* Components */,
 				002BF16D29B25CE000AA6D15 /* Views */,
 				000BF80429A83F3D00F4C33D /* gyrifierApp.swift */,
 				000BF80829A83F4000F4C33D /* Assets.xcassets */,
@@ -151,8 +158,18 @@
 				002BF17029B264F200AA6D15 /* ReviewView.swift */,
 				006F189C29B64EEB00740543 /* DetailView.swift */,
 				006F189E29B6591200740543 /* AddCardView.swift */,
+				00D31FDC29BF84270007EA83 /* HomePopup.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		00D31FD729BF7FA20007EA83 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				00D31FD829BF7FAE0007EA83 /* Navigator.swift */,
+				00D31FDE29BFA06A0007EA83 /* ViewExtension.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -288,7 +305,10 @@
 				000BF80E29A83F4000F4C33D /* Persistence.swift in Sources */,
 				000BF80729A83F3D00F4C33D /* EditView.swift in Sources */,
 				006F189F29B6591200740543 /* AddCardView.swift in Sources */,
+				00D31FDD29BF84270007EA83 /* HomePopup.swift in Sources */,
 				000BF81129A83F4000F4C33D /* gyrifier.xcdatamodeld in Sources */,
+				00D31FD929BF7FAE0007EA83 /* Navigator.swift in Sources */,
+				00D31FDF29BFA06A0007EA83 /* ViewExtension.swift in Sources */,
 				006F189D29B64EEB00740543 /* DetailView.swift in Sources */,
 				002BF16F29B25D9200AA6D15 /* HomeView.swift in Sources */,
 				002BF17129B264F200AA6D15 /* ReviewView.swift in Sources */,

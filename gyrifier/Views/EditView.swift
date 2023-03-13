@@ -10,6 +10,7 @@ import CoreData
 
 struct EditView: View {
     @Environment(\.managedObjectContext) private var viewContext
+    @EnvironmentObject var navigator: Navigator
 
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Card.dateCreated, ascending: true)],
@@ -32,6 +33,13 @@ struct EditView: View {
                 .onDelete(perform: deleteCards)
             }
             .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button {
+                        navigator.changeView(nextView: .home)
+                    } label: {
+                        Text("Back")
+                    }
+                }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     EditButton()
                 }

@@ -7,6 +7,13 @@
 
 import SwiftUI
 
+// TODO:
+// 1) Check for empty entries on save
+// 2) Fix Double display for time spent
+// 3) Display "min" and "sec" appropriately based on time
+// 4) Add selector for category
+// 5) Filter by category in edit view
+
 // TODO: Fix this re-declaration
 private let itemFormatter: DateFormatter = {
     let formatter = DateFormatter()
@@ -39,16 +46,24 @@ struct DetailView: View {
                     Text("Card Hint")
                     TextField("\(currentCard.cardHint!)", text: $cardHint)
                 }
+                Text("Category: \(currentCard.category ?? "" )")
+                Text("Level: \(currentCard.level)")
+                Text("Last Seen: \(currentCard.dateLastSeen!, formatter: itemFormatter)")
+                Text("Times Seen: \(currentCard.timesSeen)")
+                Text("Average Time Spent: \(currentCard.avgTimeSpent) seconds")
                 Text("Created: \(currentCard.dateCreated!, formatter: itemFormatter)")
                 Text("Updated: \(currentCard.dateUpdated!, formatter: itemFormatter)")
-                Text("Last Seen: \(currentCard.dateLastSeen!, formatter: itemFormatter)")
             } else {
                 Text("Card Front: \(currentCard.cardFront!)")
                 Text("Card Back: \(currentCard.cardBack!)")
                 Text("Card Hint: \(currentCard.cardHint!)")
+                Text("Category: \(currentCard.category ?? "" )")
+                Text("Level: \(currentCard.level)")
+                Text("Last Seen: \(currentCard.dateLastSeen!, formatter: itemFormatter)")
+                Text("Times Seen: \(currentCard.timesSeen)")
+                Text("Average Time Spent: \(currentCard.avgTimeSpent) seconds")
                 Text("Created: \(currentCard.dateCreated!, formatter: itemFormatter)")
                 Text("Updated: \(currentCard.dateUpdated!, formatter: itemFormatter)")
-                Text("Last Seen: \(currentCard.dateLastSeen!, formatter: itemFormatter)")
             }
         }
         .toolbar {

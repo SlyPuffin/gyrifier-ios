@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// TODO: Fix todos inside updateReviewedCard
+
 struct ReviewView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @EnvironmentObject var navigator: Navigator
@@ -95,8 +97,6 @@ struct ReviewView: View {
                 startTimer()
             }
             Spacer()
-            /// For debugging:
-            //Text("\(reviewTime) / \(timeLimit)")
         }
     }
     
@@ -104,7 +104,7 @@ struct ReviewView: View {
         if (cards.isEmpty) {
             isFinished = true
         } else {
-            shuffledCards = cards.shuffled()
+            shuffledCards = cards.filter({isStudyDateToday($0.nextAppearance ?? Date())}).shuffled()
             currentIndex = 0
             currentCard = shuffledCards[currentIndex]
             isLoading = false
@@ -113,13 +113,20 @@ struct ReviewView: View {
     
     private func iterateCards() {
         currentIndex += 1
-        updateCardLastSeen(card: currentCard)
+        updateReviewedCard(card: currentCard)
         if (isOvertime || currentIndex >= cards.count) {
             finishReview()
         } else {
             currentCard = shuffledCards[currentIndex]
             toggleFlip()
         }
+    }
+    
+    private func isStudyDateToday(_ date: Date) -> Bool {
+        var dayMatch = Calendar.current.component(.day, from: date) == Calendar.current.component(.day, from: Date())
+        var monthMatch = Calendar.current.component(.month, from: date) == Calendar.current.component(.month, from: Date())
+        var yearMatch = Calendar.current.component(.year, from: date) == Calendar.current.component(.year, from: Date())
+        return (dayMatch && monthMatch && yearMatch)
     }
     
     private func finishReview() {
@@ -132,10 +139,19 @@ struct ReviewView: View {
     }
     
     // TODO: Fix this re-declaration
-    private func updateCardLastSeen(card: Card) {
+    private func updateReviewedCard(card: Card) {
         viewContext.perform {
             // Modify the properties of the fetched object.
             card.dateLastSeen = Date()
+            card.timesSeen += 1
+            // TODO: Properly calculate next appearance
+            card.nextAppearance = Date().addingTimeInterval(24 * 60 * Double(card.timesSeen))
+            // TODO: Calculate experience points
+            if card.experiencePoints < 3 {
+                card.experiencePoints += 1
+                card.level = 1
+            }
+            // TODO: Calculate time spent on card
             
             do {
                 // Save the context to persist the changes.

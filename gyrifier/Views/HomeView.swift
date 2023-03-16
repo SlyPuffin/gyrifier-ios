@@ -8,10 +8,13 @@
 import SwiftUI
 
 struct HomeView: View {
+    @Environment(\.managedObjectContext) private var viewContext
     @EnvironmentObject var navigator: Navigator
     
     @State var isPressed = false
-    @State var isPopupOpened: Bool = false
+    @State var isReviewPopupOpened = false
+    @State var isAddPopupOpened = false
+    @State var isEditPopupOpened = false
 
     var body: some View {
         if isPressed {
@@ -20,19 +23,19 @@ struct HomeView: View {
                     Text("The Deck")
                         .fontWeight(.bold)
                     Button {
-                        self.isPopupOpened.toggle()
+                        self.isReviewPopupOpened.toggle()
                     } label: {
                         Text("Review")
                     }
                     .buttonStyle(.borderedProminent)
                     Button {
-                        navigator.changeView(nextView: .add)
+                        self.isAddPopupOpened.toggle()
                     } label: {
                         Text("Add")
                     }
                     .buttonStyle(.borderedProminent)
                     Button {
-                        navigator.changeView(nextView: .edit)
+                        self.isEditPopupOpened.toggle()
                     } label: {
                         Text("Edit")
                     }
@@ -41,8 +44,18 @@ struct HomeView: View {
                         .buttonStyle(.bordered)
                 }
             }
-            .sheet(isPresented: self.$isPopupOpened) {
-                HomePopup()
+            .sheet(isPresented: self.$isReviewPopupOpened) {
+                ReviewPopup()
+                    .environmentObject(navigator)
+            }
+            .sheet(isPresented: self.$isAddPopupOpened) {
+                AddCardPopup()
+                    .environment(\.managedObjectContext, viewContext)
+                    .environmentObject(navigator)
+            }
+            .sheet(isPresented: self.$isEditPopupOpened) {
+                EditPopup()
+                    .environment(\.managedObjectContext, viewContext)
                     .environmentObject(navigator)
             }
         } else {

@@ -22,7 +22,7 @@ enum CustomTimeUnit: String, CaseIterable, Identifiable {
     var id: Self { self }
 }
 
-struct HomePopup: View {
+struct ReviewPopup: View {
     private let customNumbers = [Int](0..<60)
     private let options = [
         ReviewTime.none("None", -1.0),
@@ -150,6 +150,6 @@ struct HomePopup: View {
 
 struct HomePopup_Previews: PreviewProvider {
     static var previews: some View {
-        HomePopup()
+        ReviewPopup()
     }
 }

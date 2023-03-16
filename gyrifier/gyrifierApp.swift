@@ -21,13 +21,6 @@ struct gyrifierApp: App {
             switch navigator.currentView {
             case .home:
                 HomeView()
-                    .environmentObject(navigator)
-            case .add:
-                AddCardView()
-                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
-                    .environmentObject(navigator)
-            case .edit:
-                EditView()
                     .environment(\.managedObjectContext, persistenceController.container.viewContext)
                     .environmentObject(navigator)
             case .review(let timeLimit):

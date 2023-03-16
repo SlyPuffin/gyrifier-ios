@@ -8,7 +8,7 @@
 import Foundation
 
 enum Views {
-    case home, edit, add, review(timeLimit: Double)
+    case home, review(timeLimit: Double)
 }
 
 class Navigator: ObservableObject {

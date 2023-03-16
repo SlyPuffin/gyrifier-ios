@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct AddCardView: View {
+struct AddCardPopup: View {
     @Environment(\.managedObjectContext) private var viewContext
-    @EnvironmentObject var navigator: Navigator
+    @Environment(\.presentationMode) var presentationMode
     
     let savedText = "Card added to deck!"
     @State var errorText = "Please input text for both the front and back of the card."
@@ -21,7 +21,7 @@ struct AddCardView: View {
     var body: some View {
         HStack {
             Button {
-                navigator.changeView(nextView: .home)
+                self.presentationMode.wrappedValue.dismiss()
             } label: {
                 Text("Back")
                     .buttonStyle(.borderedProminent)
@@ -86,6 +86,6 @@ struct AddCardView: View {
 
 struct AddCardView_Previews: PreviewProvider {
     static var previews: some View {
-        AddCardView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        AddCardPopup().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }

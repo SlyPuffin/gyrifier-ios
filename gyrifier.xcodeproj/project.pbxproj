@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		000BF80529A83F3D00F4C33D /* gyrifierApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000BF80429A83F3D00F4C33D /* gyrifierApp.swift */; };
-		000BF80729A83F3D00F4C33D /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000BF80629A83F3D00F4C33D /* EditView.swift */; };
+		000BF80729A83F3D00F4C33D /* EditPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000BF80629A83F3D00F4C33D /* EditPopup.swift */; };
 		000BF80929A83F4000F4C33D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 000BF80829A83F4000F4C33D /* Assets.xcassets */; };
 		000BF80C29A83F4000F4C33D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 000BF80B29A83F4000F4C33D /* Preview Assets.xcassets */; };
 		000BF80E29A83F4000F4C33D /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000BF80D29A83F4000F4C33D /* Persistence.swift */; };
@@ -19,9 +19,9 @@
 		002BF16F29B25D9200AA6D15 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002BF16E29B25D9200AA6D15 /* HomeView.swift */; };
 		002BF17129B264F200AA6D15 /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002BF17029B264F200AA6D15 /* ReviewView.swift */; };
 		006F189D29B64EEB00740543 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006F189C29B64EEB00740543 /* DetailView.swift */; };
-		006F189F29B6591200740543 /* AddCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006F189E29B6591200740543 /* AddCardView.swift */; };
+		006F189F29B6591200740543 /* AddCardPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006F189E29B6591200740543 /* AddCardPopup.swift */; };
 		00D31FD929BF7FAE0007EA83 /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D31FD829BF7FAE0007EA83 /* Navigator.swift */; };
-		00D31FDD29BF84270007EA83 /* HomePopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D31FDC29BF84270007EA83 /* HomePopup.swift */; };
+		00D31FDD29BF84270007EA83 /* ReviewPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D31FDC29BF84270007EA83 /* ReviewPopup.swift */; };
 		00D31FDF29BFA06A0007EA83 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D31FDE29BFA06A0007EA83 /* ViewExtension.swift */; };
 /* End PBXBuildFile section */
 
@@ -45,7 +45,7 @@
 /* Begin PBXFileReference section */
 		000BF80129A83F3D00F4C33D /* gyrifier.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gyrifier.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		000BF80429A83F3D00F4C33D /* gyrifierApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gyrifierApp.swift; sourceTree = "<group>"; };
-		000BF80629A83F3D00F4C33D /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
+		000BF80629A83F3D00F4C33D /* EditPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPopup.swift; sourceTree = "<group>"; };
 		000BF80829A83F4000F4C33D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		000BF80B29A83F4000F4C33D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		000BF80D29A83F4000F4C33D /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -59,9 +59,9 @@
 		002BF16E29B25D9200AA6D15 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		002BF17029B264F200AA6D15 /* ReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
 		006F189C29B64EEB00740543 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
-		006F189E29B6591200740543 /* AddCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardView.swift; sourceTree = "<group>"; };
+		006F189E29B6591200740543 /* AddCardPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardPopup.swift; sourceTree = "<group>"; };
 		00D31FD829BF7FAE0007EA83 /* Navigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
-		00D31FDC29BF84270007EA83 /* HomePopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePopup.swift; sourceTree = "<group>"; };
+		00D31FDC29BF84270007EA83 /* ReviewPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewPopup.swift; sourceTree = "<group>"; };
 		00D31FDE29BFA06A0007EA83 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -153,12 +153,12 @@
 		002BF16D29B25CE000AA6D15 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				000BF80629A83F3D00F4C33D /* EditView.swift */,
+				000BF80629A83F3D00F4C33D /* EditPopup.swift */,
 				002BF16E29B25D9200AA6D15 /* HomeView.swift */,
 				002BF17029B264F200AA6D15 /* ReviewView.swift */,
 				006F189C29B64EEB00740543 /* DetailView.swift */,
-				006F189E29B6591200740543 /* AddCardView.swift */,
-				00D31FDC29BF84270007EA83 /* HomePopup.swift */,
+				006F189E29B6591200740543 /* AddCardPopup.swift */,
+				00D31FDC29BF84270007EA83 /* ReviewPopup.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -303,9 +303,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				000BF80E29A83F4000F4C33D /* Persistence.swift in Sources */,
-				000BF80729A83F3D00F4C33D /* EditView.swift in Sources */,
-				006F189F29B6591200740543 /* AddCardView.swift in Sources */,
-				00D31FDD29BF84270007EA83 /* HomePopup.swift in Sources */,
+				000BF80729A83F3D00F4C33D /* EditPopup.swift in Sources */,
+				006F189F29B6591200740543 /* AddCardPopup.swift in Sources */,
+				00D31FDD29BF84270007EA83 /* ReviewPopup.swift in Sources */,
 				000BF81129A83F4000F4C33D /* gyrifier.xcdatamodeld in Sources */,
 				00D31FD929BF7FAE0007EA83 /* Navigator.swift in Sources */,
 				00D31FDF29BFA06A0007EA83 /* ViewExtension.swift in Sources */,

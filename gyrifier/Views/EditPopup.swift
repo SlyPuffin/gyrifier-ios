@@ -8,9 +8,9 @@
 import SwiftUI
 import CoreData
 
-struct EditView: View {
+struct EditPopup: View {
     @Environment(\.managedObjectContext) private var viewContext
-    @EnvironmentObject var navigator: Navigator
+    @Environment(\.presentationMode) var presentationMode
 
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Card.dateCreated, ascending: true)],
@@ -35,7 +35,7 @@ struct EditView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button {
-                        navigator.changeView(nextView: .home)
+                        self.presentationMode.wrappedValue.dismiss()
                     } label: {
                         Text("Back")
                     }
@@ -101,6 +101,6 @@ private let itemFormatter: DateFormatter = {
 
 struct EditView_Previews: PreviewProvider {
     static var previews: some View {
-        EditView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        EditPopup().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }

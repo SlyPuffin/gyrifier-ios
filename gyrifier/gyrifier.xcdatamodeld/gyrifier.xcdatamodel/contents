@@ -12,7 +12,9 @@
         <attribute name="expansion_1" optional="YES" attributeType="String"/>
         <attribute name="expansion_2" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="expansion_3" optional="YES" attributeType="String"/>
+        <attribute name="experiencePoints" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="level" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="nextAppearance" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="timesSeen" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
     <entity name="Item" representedClassName="Item" syncable="YES" codeGenerationType="class">

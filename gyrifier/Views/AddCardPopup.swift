@@ -62,7 +62,11 @@ struct AddCardPopup: View {
             let newCard = Card(context: viewContext)
             newCard.dateCreated = Date()
             newCard.dateUpdated = Date()
+            newCard.nextAppearance = Date()
             newCard.dateLastSeen = Date(timeIntervalSinceReferenceDate: 0)
+            newCard.level = 1
+            newCard.timesSeen = 0
+            newCard.avgTimeSpent = 0.0
             newCard.cardFront = cardFrontText
             newCard.cardBack = cardBackText
             newCard.cardHint = ""

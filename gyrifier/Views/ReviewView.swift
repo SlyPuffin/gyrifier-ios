@@ -47,6 +47,7 @@ struct ReviewView: View {
                     Text("Congratulations! You finished!")
                 }
             }
+            Spacer()
         } else {
             Button {
                 if isFlipped {
@@ -101,10 +102,11 @@ struct ReviewView: View {
     }
     
     private func startIteration() {
-        if (cards.isEmpty) {
+        shuffledCards = cards.filter({isStudyDateToday($0.nextAppearance!)}).shuffled()
+        if (shuffledCards.isEmpty) {
             isFinished = true
-        } else {
-            shuffledCards = cards.filter({isStudyDateToday($0.nextAppearance ?? Date())}).shuffled()
+        }
+        else {
             currentIndex = 0
             currentCard = shuffledCards[currentIndex]
             isLoading = false
@@ -114,7 +116,10 @@ struct ReviewView: View {
     private func iterateCards() {
         currentIndex += 1
         updateReviewedCard(card: currentCard)
-        if (isOvertime || currentIndex >= cards.count) {
+        print("Deck length: \(cards.count)")
+        print("Shuffled cards length: \(shuffledCards.count)")
+        print("Current index: \(currentIndex)")
+        if (isOvertime || currentIndex >= shuffledCards.count) {
             finishReview()
         } else {
             currentCard = shuffledCards[currentIndex]
@@ -123,10 +128,11 @@ struct ReviewView: View {
     }
     
     private func isStudyDateToday(_ date: Date) -> Bool {
-        var dayMatch = Calendar.current.component(.day, from: date) == Calendar.current.component(.day, from: Date())
+        return date.timeIntervalSinceNow.sign == FloatingPointSign.minus
+        /*var dayMatch = Calendar.current.component(.day, from: date) == Calendar.current.component(.day, from: Date())
         var monthMatch = Calendar.current.component(.month, from: date) == Calendar.current.component(.month, from: Date())
         var yearMatch = Calendar.current.component(.year, from: date) == Calendar.current.component(.year, from: Date())
-        return (dayMatch && monthMatch && yearMatch)
+        return (dayMatch && monthMatch && yearMatch)*/
     }
     
     private func finishReview() {
@@ -145,7 +151,7 @@ struct ReviewView: View {
             card.dateLastSeen = Date()
             card.timesSeen += 1
             // TODO: Properly calculate next appearance
-            card.nextAppearance = Date().addingTimeInterval(24 * 60 * Double(card.timesSeen))
+            card.nextAppearance = Date().addingTimeInterval(24 * 60 * 60 * Double(card.timesSeen))
             // TODO: Calculate experience points
             if card.experiencePoints < 3 {
                 card.experiencePoints += 1

@@ -63,7 +63,7 @@ struct DetailView: View {
                 Text("Next Appearance: \(currentCard.nextAppearance ?? Date(), formatter: itemFormatter)")
                 VStack {
                     Text("Last Seen: \(currentCard.dateLastSeen!, formatter: itemFormatter)")
-                    Text("Times Seen: \(currentCard.timesSeen)")
+                    Text("# of Times Seen: \(currentCard.timesSeen)")
                     Text("Average Time Spent: \(displayTime(time: currentCard.avgTimeSpent))")
                 }
                 Text("Created: \(currentCard.dateCreated!, formatter: itemFormatter)")
@@ -80,7 +80,7 @@ struct DetailView: View {
                 Text("Next Appearance: \(currentCard.nextAppearance ?? Date(), formatter: itemFormatter)")
                 VStack {
                     Text("Last Seen: \(currentCard.dateLastSeen!, formatter: itemFormatter)")
-                    Text("Times Seen: \(currentCard.timesSeen)")
+                    Text("# of Times Seen: \(currentCard.timesSeen)")
                     Text("Average Time Spent: \(displayTime(time: currentCard.avgTimeSpent))")
                 }
                 Text("Created: \(currentCard.dateCreated!, formatter: itemFormatter)")

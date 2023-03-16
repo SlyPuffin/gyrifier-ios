@@ -25,7 +25,10 @@ struct EditPopup: View {
                         DetailView(currentCard: card)
                             .environment(\.managedObjectContext, viewContext)
                     } label: {
-                        Text("\(card.cardFront!) \(card.dateCreated!, formatter: itemFormatter)")
+                        Text("\(card.cardFront!)")
+                        Spacer()
+                        Text("lvl: \(card.level)")
+                        Spacer()
                     }
                     .navigationTitle("Edit Deck")
                     .navigationBarTitleDisplayMode(.inline)
@@ -42,11 +45,6 @@ struct EditPopup: View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     EditButton()
-                }
-                ToolbarItem {
-                    Button(action: addCard) {
-                        Label("Add Card", systemImage: "plus")
-                    }
                 }
             }
             Text("Select a card")

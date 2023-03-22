@@ -29,6 +29,8 @@ struct ReviewView: View {
     @State var isLoading = true
     @State var currentIndex = 0
     @State var currentCard: Card = Card()
+    @State var startTime = 0.0
+    @State var stopTime = 0.0
     
     var body: some View {
         HStack {
@@ -116,9 +118,6 @@ struct ReviewView: View {
     private func iterateCards() {
         currentIndex += 1
         updateReviewedCard(card: currentCard)
-        print("Deck length: \(cards.count)")
-        print("Shuffled cards length: \(shuffledCards.count)")
-        print("Current index: \(currentIndex)")
         if (isOvertime || currentIndex >= shuffledCards.count) {
             finishReview()
         } else {
@@ -129,10 +128,6 @@ struct ReviewView: View {
     
     private func isStudyDateToday(_ date: Date) -> Bool {
         return date.timeIntervalSinceNow.sign == FloatingPointSign.minus
-        /*var dayMatch = Calendar.current.component(.day, from: date) == Calendar.current.component(.day, from: Date())
-        var monthMatch = Calendar.current.component(.month, from: date) == Calendar.current.component(.month, from: Date())
-        var yearMatch = Calendar.current.component(.year, from: date) == Calendar.current.component(.year, from: Date())
-        return (dayMatch && monthMatch && yearMatch)*/
     }
     
     private func finishReview() {
@@ -157,7 +152,11 @@ struct ReviewView: View {
                 card.experiencePoints += 1
                 card.level = 1
             }
-            // TODO: Calculate time spent on card
+            stopTime = reviewTime
+            let timeSpent = stopTime - startTime
+            let newAvg = (timeSpent + (card.avgTimeSpent * Double(card.timesSeen - 1))) / Double(card.timesSeen)
+            card.avgTimeSpent = newAvg
+            startTime = reviewTime
             
             do {
                 // Save the context to persist the changes.
@@ -177,6 +176,7 @@ struct ReviewView: View {
                     isOvertime = true
                 }
             }
+            startTime = reviewTime
         }
     }
 }

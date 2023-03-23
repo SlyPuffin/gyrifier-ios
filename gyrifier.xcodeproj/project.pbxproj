@@ -25,6 +25,7 @@
 		00D31FD929BF7FAE0007EA83 /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D31FD829BF7FAE0007EA83 /* Navigator.swift */; };
 		00D31FDD29BF84270007EA83 /* ReviewPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D31FDC29BF84270007EA83 /* ReviewPopup.swift */; };
 		00D31FDF29BFA06A0007EA83 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D31FDE29BFA06A0007EA83 /* ViewExtension.swift */; };
+		00DB0D3429CCC08C00269872 /* ReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DB0D3329CCC08C00269872 /* ReviewViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		00D31FD829BF7FAE0007EA83 /* Navigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
 		00D31FDC29BF84270007EA83 /* ReviewPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewPopup.swift; sourceTree = "<group>"; };
 		00D31FDE29BFA06A0007EA83 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
+		00DB0D3329CCC08C00269872 /* ReviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +160,7 @@
 				000BF80629A83F3D00F4C33D /* EditPopup.swift */,
 				002BF16E29B25D9200AA6D15 /* HomeView.swift */,
 				002BF17029B264F200AA6D15 /* ReviewView.swift */,
+				00DB0D3329CCC08C00269872 /* ReviewViewModel.swift */,
 				006F189C29B64EEB00740543 /* DetailView.swift */,
 				006F189E29B6591200740543 /* AddCardPopup.swift */,
 				00D31FDC29BF84270007EA83 /* ReviewPopup.swift */,
@@ -314,6 +317,7 @@
 				006F189D29B64EEB00740543 /* DetailView.swift in Sources */,
 				002BF16F29B25D9200AA6D15 /* HomeView.swift in Sources */,
 				002BF17129B264F200AA6D15 /* ReviewView.swift in Sources */,
+				00DB0D3429CCC08C00269872 /* ReviewViewModel.swift in Sources */,
 				000BF80529A83F3D00F4C33D /* gyrifierApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

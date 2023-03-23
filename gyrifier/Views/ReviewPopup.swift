@@ -75,8 +75,8 @@ struct ReviewPopup: View {
             if optionString(selectedReviewTime) == "Custom" {
                 HStack(spacing: 0) {
                     Picker(selection: $customTime, label: Text("")) {
-                        ForEach(0..<self.customNumbers.count) { index in
-                            Text("\(self.customNumbers[index])").tag(index)
+                        ForEach(self.customNumbers, id: \.self) { index in
+                            Text("\(index)").tag(index)
                        }
                     }
                     .pickerStyle(.wheel)

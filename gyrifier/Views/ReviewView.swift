@@ -106,7 +106,7 @@ struct ReviewView: View {
     private func startIteration() {
         shuffledCards = cards.filter({isStudyDateToday($0.nextAppearance!)}).shuffled()
         if (shuffledCards.isEmpty) {
-            isFinished = true
+            finishReview()
         }
         else {
             currentIndex = 0
@@ -117,54 +117,12 @@ struct ReviewView: View {
     
     private func iterateCards() {
         currentIndex += 1
-        updateReviewedCard(card: currentCard)
+        updateReviewedCard(card: prepReviewedCard(card: currentCard))
         if (isOvertime || currentIndex >= shuffledCards.count) {
             finishReview()
         } else {
             currentCard = shuffledCards[currentIndex]
             toggleFlip()
-        }
-    }
-    
-    private func isStudyDateToday(_ date: Date) -> Bool {
-        return date.timeIntervalSinceNow.sign == FloatingPointSign.minus
-    }
-    
-    private func finishReview() {
-        isFinished = true
-        timer?.invalidate()
-    }
-    
-    private func toggleFlip() {
-        isFlipped.toggle()
-    }
-    
-    // TODO: Fix this re-declaration
-    private func updateReviewedCard(card: Card) {
-        viewContext.perform {
-            // Modify the properties of the fetched object.
-            card.dateLastSeen = Date()
-            card.timesSeen += 1
-            // TODO: Properly calculate next appearance
-            card.nextAppearance = Date().addingTimeInterval(24 * 60 * 60 * Double(card.timesSeen))
-            // TODO: Calculate experience points
-            if card.experiencePoints < 3 {
-                card.experiencePoints += 1
-                card.level = 1
-            }
-            stopTime = reviewTime
-            let timeSpent = stopTime - startTime
-            let newAvg = (timeSpent + (card.avgTimeSpent * Double(card.timesSeen - 1))) / Double(card.timesSeen)
-            card.avgTimeSpent = newAvg
-            startTime = reviewTime
-            
-            do {
-                // Save the context to persist the changes.
-                try viewContext.save()
-            } catch {
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
         }
     }
     
@@ -177,6 +135,63 @@ struct ReviewView: View {
                 }
             }
             startTime = reviewTime
+        }
+    }
+    
+    private func isStudyDateToday(_ date: Date) -> Bool {
+        // TODO: Handle case where evening time practice doesn't spill into next day
+        return date.timeIntervalSinceNow.sign == FloatingPointSign.minus
+    }
+    
+    private func finishReview() {
+        isFinished = true
+        timer?.invalidate()
+    }
+    
+    private func toggleFlip() {
+        isFlipped.toggle()
+    }
+    
+    private func prepReviewedCard(card: Card) -> Card {
+        let result = card
+        result.dateLastSeen = Date()
+        result.timesSeen += 1
+        result.nextAppearance = nextAppearanceFor(card: card)
+        result.experiencePoints = experiencePointsFor(card: card)
+        result.avgTimeSpent = avgTimeSpentFor(card: card)
+        return result
+    }
+    
+    private func nextAppearanceFor(card: Card) -> Date {
+        return Date().addingTimeInterval(24 * 60 * 60 * Double(card.timesSeen))
+    }
+    
+    private func experiencePointsFor(card: Card) -> Int16 {
+        if card.experiencePoints < 3 {
+            return card.experiencePoints + 1
+        }
+        else {
+            return 3
+        }
+    }
+    
+    private func avgTimeSpentFor(card: Card) -> Double {
+        stopTime = reviewTime
+        let timeSpent = stopTime - startTime
+        let result = (timeSpent + (card.avgTimeSpent * Double(card.timesSeen - 1))) / Double(card.timesSeen)
+        startTime = reviewTime
+        return result
+    }
+    
+    private func updateReviewedCard(card: Card) {
+        viewContext.perform {
+            do {
+                // Save the context to persist the changes.
+                try viewContext.save()
+            } catch {
+                let nsError = error as NSError
+                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+            }
         }
     }
 }

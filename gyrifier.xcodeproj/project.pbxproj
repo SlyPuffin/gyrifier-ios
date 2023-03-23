@@ -20,6 +20,8 @@
 		002BF17129B264F200AA6D15 /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002BF17029B264F200AA6D15 /* ReviewView.swift */; };
 		006F189D29B64EEB00740543 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006F189C29B64EEB00740543 /* DetailView.swift */; };
 		006F189F29B6591200740543 /* AddCardPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006F189E29B6591200740543 /* AddCardPopup.swift */; };
+		00D2A4EB29CBA72B008452DA /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D31FD829BF7FAE0007EA83 /* Navigator.swift */; };
+		00D2A4EC29CBA9F3008452DA /* ReviewPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D31FDC29BF84270007EA83 /* ReviewPopup.swift */; };
 		00D31FD929BF7FAE0007EA83 /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D31FD829BF7FAE0007EA83 /* Navigator.swift */; };
 		00D31FDD29BF84270007EA83 /* ReviewPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D31FDC29BF84270007EA83 /* ReviewPopup.swift */; };
 		00D31FDF29BFA06A0007EA83 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D31FDE29BFA06A0007EA83 /* ViewExtension.swift */; };
@@ -321,6 +323,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				000BF81C29A83F4000F4C33D /* gyrifierTests.swift in Sources */,
+				00D2A4EC29CBA9F3008452DA /* ReviewPopup.swift in Sources */,
+				00D2A4EB29CBA72B008452DA /* Navigator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

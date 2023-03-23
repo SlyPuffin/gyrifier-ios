@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Views {
+enum Views: Equatable {
     case home, review(timeLimit: Double)
 }
 

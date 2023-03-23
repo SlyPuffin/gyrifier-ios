@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreData
+import SwiftUI
 
 class ReviewViewModel: ObservableObject {
     @Published var isFinished = false
@@ -27,7 +28,7 @@ class ReviewViewModel: ObservableObject {
     }
     
     func prepareCards(cards: [Card]) {
-        shuffledCards = cards
+        shuffledCards = cards.filter({isStudyDateTodayOrEarlier($0.nextAppearance!)}).shuffled()
         if (shuffledCards.isEmpty) {
             finishReview()
         }
@@ -66,6 +67,10 @@ class ReviewViewModel: ObservableObject {
     private func finishReview() {
         isFinished = true
         timer?.invalidate()
+    }
+    
+    private func isStudyDateTodayOrEarlier(_ date: Date) -> Bool {
+        return (Calendar.current.isDateInToday(date) || date.timeIntervalSinceNow.sign == FloatingPointSign.minus)
     }
     
     private func updateReviewedCard(card: Card, viewContext: NSManagedObjectContext) {

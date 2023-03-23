@@ -83,21 +83,12 @@ struct ReviewView: View {
                     )
             }
             .onAppear() {
-                startIteration()
+                model.prepareCards(cards: Array(cards))
                 model.setTimeLimit(timeLimit: timeLimit)
                 model.startTimer()
             }
             Spacer()
         }
-    }
-    
-    private func startIteration() {
-        model.prepareCards(cards: cards.filter({isStudyDateToday($0.nextAppearance!)}).shuffled())
-    }
-        
-    private func isStudyDateToday(_ date: Date) -> Bool {
-        // TODO: Handle case where evening time practice doesn't spill into next day
-        return date.timeIntervalSinceNow.sign == FloatingPointSign.minus
     }
 }
 

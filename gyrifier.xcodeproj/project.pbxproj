@@ -26,6 +26,7 @@
 		00D31FDD29BF84270007EA83 /* ReviewPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D31FDC29BF84270007EA83 /* ReviewPopup.swift */; };
 		00D31FDF29BFA06A0007EA83 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D31FDE29BFA06A0007EA83 /* ViewExtension.swift */; };
 		00DB0D3429CCC08C00269872 /* ReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DB0D3329CCC08C00269872 /* ReviewViewModel.swift */; };
+		00E32C3B29CD0A96006467C9 /* coreDataTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E32C3A29CD0A96006467C9 /* coreDataTestHelpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		00D31FDC29BF84270007EA83 /* ReviewPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewPopup.swift; sourceTree = "<group>"; };
 		00D31FDE29BFA06A0007EA83 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		00DB0D3329CCC08C00269872 /* ReviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewModel.swift; sourceTree = "<group>"; };
+		00E32C3A29CD0A96006467C9 /* coreDataTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = coreDataTestHelpers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				000BF81B29A83F4000F4C33D /* gyrifierTests.swift */,
+				00E32C3A29CD0A96006467C9 /* coreDataTestHelpers.swift */,
 			);
 			path = gyrifierTests;
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 			files = (
 				000BF81C29A83F4000F4C33D /* gyrifierTests.swift in Sources */,
 				00D2A4EC29CBA9F3008452DA /* ReviewPopup.swift in Sources */,
+				00E32C3B29CD0A96006467C9 /* coreDataTestHelpers.swift in Sources */,
 				00D2A4EB29CBA72B008452DA /* Navigator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

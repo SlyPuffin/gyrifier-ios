@@ -15,61 +15,92 @@ struct HomeView: View {
     @State var isReviewPopupOpened = false
     @State var isAddPopupOpened = false
     @State var isEditPopupOpened = false
-
+    
     var body: some View {
-        if isPressed {
-            HStack (alignment: .center) {
-                VStack (alignment: .center, spacing: 25) {
-                    Text("The Deck")
-                        .fontWeight(.bold)
-                    Button {
-                        self.isReviewPopupOpened.toggle()
-                    } label: {
-                        Text("Review")
-                    }
-                    .buttonStyle(.borderedProminent)
-                    Button {
-                        self.isAddPopupOpened.toggle()
-                    } label: {
-                        Text("Add")
-                    }
-                    .buttonStyle(.borderedProminent)
-                    Button {
-                        self.isEditPopupOpened.toggle()
-                    } label: {
-                        Text("Edit")
-                    }
-                    .buttonStyle(.borderedProminent)
-                    Button("Close", action: togglePressed)
-                        .buttonStyle(.bordered)
-                }
-            }
-            .sheet(isPresented: self.$isReviewPopupOpened) {
-                ReviewPopup()
-                    .environmentObject(navigator)
-            }
-            .sheet(isPresented: self.$isAddPopupOpened) {
-                AddCardPopup()
-                    .environment(\.managedObjectContext, viewContext)
-                    .environmentObject(navigator)
-            }
-            .sheet(isPresented: self.$isEditPopupOpened) {
-                EditPopup()
-                    .environment(\.managedObjectContext, viewContext)
-                    .environmentObject(navigator)
-            }
-        } else {
-            VStack (alignment: .center) {
+        GeometryReader { geometryReader in
+            VStack (alignment: .center, spacing: 10) {
+                Spacer()
                 HStack (alignment: .center) {
-                    Button("The Deck", action: togglePressed)
-                        .buttonStyle(.borderedProminent)
+                    Spacer()
+                    ZStack {
+                        Text("Gyrifier")
+                            .font(.largeTitle)
+                            .fontWeight(.thin)
+                            .fontDesign(.serif)
+                            .opacity(isPressed ? 1 : 0)
+                            .animation(Animation.easeInOut(duration: isPressed ? 0.2 : 0.0), value: isPressed)
+                        Button {
+                            withAnimation {
+                                isPressed.toggle()
+                            }
+                        } label: {
+                            CustomButtonView("Gyrifier", buttonSize: isPressed ? .half_height : .large, screenSize: geometryReader.size, buttonStyle: .prominent, fontWeight: .thin)
+                        }
+                        .opacity(isPressed ? 0 : 1)
+                        .animation(Animation.easeIn(duration: isPressed ? 0.0 : 0.6), value: isPressed)
+                    }
+                    Spacer()
                 }
+                if isPressed {
+                    HStack (alignment: .center, spacing: 10) {
+                        Spacer()
+                        Button {
+                            self.isReviewPopupOpened.toggle()
+                        } label: {
+                            CustomButtonView("Review", buttonSize: .double_width, screenSize: geometryReader.size, fontWeight: .medium)
+                        }
+                        Spacer()
+                    }
+                    .opacity(isPressed ? 1 : 0)
+                    .animation(Animation.easeInOut(duration: 0.2), value: isPressed)
+                    HStack (alignment: .center, spacing: 10) {
+                        VStack {
+                            Button {
+                                self.isAddPopupOpened.toggle()
+                            } label: {
+                                CustomButtonView("Add", buttonSize: .half_height, screenSize: geometryReader.size)
+                            }
+                            Button {
+                                self.isEditPopupOpened.toggle()
+                            } label: {
+                                CustomButtonView("Edit", buttonSize: .half_height, screenSize: geometryReader.size)
+                            }
+                        }
+                        VStack {
+                            Button {
+                                // TODO: Implement
+                            } label: {
+                                CustomButtonView("Settings", buttonSize: .half_height, screenSize: geometryReader.size)
+                            }
+                            Button {
+                                withAnimation {
+                                    isPressed.toggle()
+                                }
+                            } label: {
+                                CustomButtonView("Close", buttonSize: .half_height, screenSize: geometryReader.size, buttonStyle: .cancel, fontWeight: .medium)
+                            }
+                        }
+                    }
+                    .opacity(isPressed ? 1 : 0)
+                    .animation(Animation.easeInOut(duration: 0.2), value: isPressed)
+                }
+                Spacer()
             }
         }
-    }
-    
-    private func togglePressed() {
-        isPressed.toggle()
+        .sheet(isPresented: self.$isReviewPopupOpened) {
+            ReviewPopup()
+                .environmentObject(navigator)
+        }
+        .sheet(isPresented: self.$isAddPopupOpened) {
+            AddCardPopup()
+                .environment(\.managedObjectContext, viewContext)
+                .environmentObject(navigator)
+        }
+        .sheet(isPresented: self.$isEditPopupOpened) {
+            EditPopup()
+                .environment(\.managedObjectContext, viewContext)
+                .environmentObject(navigator)
+        }
     }
 }
 

@@ -18,6 +18,7 @@
 		000BF82829A83F4000F4C33D /* gyrifierUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000BF82729A83F4000F4C33D /* gyrifierUITestsLaunchTests.swift */; };
 		002BF16F29B25D9200AA6D15 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002BF16E29B25D9200AA6D15 /* HomeView.swift */; };
 		002BF17129B264F200AA6D15 /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002BF17029B264F200AA6D15 /* ReviewView.swift */; };
+		00687E3229D5EC7D000EB61D /* CustomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00687E3129D5EC7D000EB61D /* CustomButtonView.swift */; };
 		006F189D29B64EEB00740543 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006F189C29B64EEB00740543 /* DetailView.swift */; };
 		006F189F29B6591200740543 /* AddCardPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006F189E29B6591200740543 /* AddCardPopup.swift */; };
 		00D2A4EB29CBA72B008452DA /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D31FD829BF7FAE0007EA83 /* Navigator.swift */; };
@@ -62,6 +63,7 @@
 		000BF82729A83F4000F4C33D /* gyrifierUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gyrifierUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		002BF16E29B25D9200AA6D15 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		002BF17029B264F200AA6D15 /* ReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
+		00687E3129D5EC7D000EB61D /* CustomButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonView.swift; sourceTree = "<group>"; };
 		006F189C29B64EEB00740543 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		006F189E29B6591200740543 /* AddCardPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardPopup.swift; sourceTree = "<group>"; };
 		00D31FD829BF7FAE0007EA83 /* Navigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 		002BF16D29B25CE000AA6D15 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				00687E3029D5EC5D000EB61D /* ComponentViews */,
 				000BF80629A83F3D00F4C33D /* EditPopup.swift */,
 				002BF16E29B25D9200AA6D15 /* HomeView.swift */,
 				002BF17029B264F200AA6D15 /* ReviewView.swift */,
@@ -169,6 +172,14 @@
 				00D31FDC29BF84270007EA83 /* ReviewPopup.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		00687E3029D5EC5D000EB61D /* ComponentViews */ = {
+			isa = PBXGroup;
+			children = (
+				00687E3129D5EC7D000EB61D /* CustomButtonView.swift */,
+			);
+			path = ComponentViews;
 			sourceTree = "<group>";
 		};
 		00D31FD729BF7FA20007EA83 /* Components */ = {
@@ -320,6 +331,7 @@
 				006F189D29B64EEB00740543 /* DetailView.swift in Sources */,
 				002BF16F29B25D9200AA6D15 /* HomeView.swift in Sources */,
 				002BF17129B264F200AA6D15 /* ReviewView.swift in Sources */,
+				00687E3229D5EC7D000EB61D /* CustomButtonView.swift in Sources */,
 				00DB0D3429CCC08C00269872 /* ReviewViewModel.swift in Sources */,
 				000BF80529A83F3D00F4C33D /* gyrifierApp.swift in Sources */,
 			);

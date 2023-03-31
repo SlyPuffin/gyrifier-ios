@@ -11,10 +11,17 @@ struct HomeView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @EnvironmentObject var navigator: Navigator
     
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \Card.dateCreated, ascending: true)],
+        animation: .default)
+    private var cards: FetchedResults<Card>
+    
     @State var isPressed = false
+    @State var isLevelUpAvailable = false
     @State var isReviewPopupOpened = false
     @State var isAddPopupOpened = false
     @State var isEditPopupOpened = false
+    @State var isLevelUpPopupOpened = false
     
     var body: some View {
         GeometryReader { geometryReader in
@@ -47,7 +54,14 @@ struct HomeView: View {
                         Button {
                             self.isReviewPopupOpened.toggle()
                         } label: {
-                            CustomButtonView("Review", buttonSize: .double_width, screenSize: geometryReader.size, fontWeight: .medium)
+                            CustomButtonView("Review", buttonSize: isLevelUpAvailable ? .large : .double_width, screenSize: geometryReader.size, fontWeight: .medium)
+                        }
+                        if isLevelUpAvailable {
+                            Button {
+                                self.isLevelUpPopupOpened.toggle()
+                            } label: {
+                                CustomButtonView("Level Up", buttonSize: .large, screenSize: geometryReader.size)
+                            }
                         }
                         Spacer()
                     }
@@ -83,6 +97,9 @@ struct HomeView: View {
                     }
                     .opacity(isPressed ? 1 : 0)
                     .animation(Animation.easeInOut(duration: 0.2), value: isPressed)
+                    .onAppear() {
+                        isLevelUpAvailable = checkForLevelUps(cards: Array(cards))
+                    }
                 }
                 Spacer()
             }
@@ -101,6 +118,24 @@ struct HomeView: View {
                 .environment(\.managedObjectContext, viewContext)
                 .environmentObject(navigator)
         }
+        .sheet(isPresented: self.$isLevelUpPopupOpened) {
+            LevelUpPopup(cards: returnLevelUps(cards: Array(cards)))
+                .environment(\.managedObjectContext, viewContext)
+                .environmentObject(navigator)
+        }
+    }
+    
+    private func checkForLevelUps(cards: [Card]) -> Bool {
+        return !cards.filter({canCardLevelUp(card: $0)}).isEmpty
+    }
+    
+    private func returnLevelUps(cards: [Card]) -> [Card] {
+        return cards.filter({canCardLevelUp(card: $0)}).shuffled()
+    }
+
+    private func canCardLevelUp(card: Card) -> Bool {
+        return (card.level == 1 && card.experiencePoints == 3)
+//        return ((card.level == 1 && card.experiencePoints == 3) || (card.level == 2 && card.experiencePoints == 8) || (card.level == 3 && card.experiencePoints == 15) || (card.level == 4 && card.experiencePoints == 25))
     }
 }
 

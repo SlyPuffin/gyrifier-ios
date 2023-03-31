@@ -61,15 +61,18 @@ final class gyrifierTests: XCTestCase {
 
         XCTAssertEqual(reviewViewModel.currentCard.category, "Now", "Category should be 'Now' due to filtering")
         
-        reviewViewModel.iterateCards(viewContext: managedObjectContext)
+        reviewViewModel.tapCard(viewContext: managedObjectContext)
+        reviewViewModel.tapCard(viewContext: managedObjectContext)
         XCTAssertEqual(reviewViewModel.currentCard.category, "Now", "Category should be 'Now' due to filtering")
         XCTAssertFalse(reviewViewModel.isFinished, "Review should not be finished as there should be two more cards")
         
-        reviewViewModel.iterateCards(viewContext: managedObjectContext)
+        reviewViewModel.tapCard(viewContext: managedObjectContext)
+        reviewViewModel.tapCard(viewContext: managedObjectContext)
         XCTAssertEqual(reviewViewModel.currentCard.category, "Now", "Category should be 'Now' due to filtering")
         XCTAssertFalse(reviewViewModel.isFinished, "Review should not be finished as there should be one last card")
         
-        reviewViewModel.iterateCards(viewContext: managedObjectContext)
+        reviewViewModel.tapCard(viewContext: managedObjectContext)
+        reviewViewModel.tapCard(viewContext: managedObjectContext)
         XCTAssertTrue(reviewViewModel.isFinished, "Review should have finished due to all cards iterating")
     }
 

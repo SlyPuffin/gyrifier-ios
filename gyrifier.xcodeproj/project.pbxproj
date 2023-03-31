@@ -18,6 +18,7 @@
 		000BF82829A83F4000F4C33D /* gyrifierUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000BF82729A83F4000F4C33D /* gyrifierUITestsLaunchTests.swift */; };
 		002BF16F29B25D9200AA6D15 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002BF16E29B25D9200AA6D15 /* HomeView.swift */; };
 		002BF17129B264F200AA6D15 /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002BF17029B264F200AA6D15 /* ReviewView.swift */; };
+		002C42B729D6404900673F85 /* LevelUpPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002C42B629D6404900673F85 /* LevelUpPopup.swift */; };
 		00687E3229D5EC7D000EB61D /* CustomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00687E3129D5EC7D000EB61D /* CustomButtonView.swift */; };
 		006F189D29B64EEB00740543 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006F189C29B64EEB00740543 /* DetailView.swift */; };
 		006F189F29B6591200740543 /* AddCardPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006F189E29B6591200740543 /* AddCardPopup.swift */; };
@@ -63,6 +64,7 @@
 		000BF82729A83F4000F4C33D /* gyrifierUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gyrifierUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		002BF16E29B25D9200AA6D15 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		002BF17029B264F200AA6D15 /* ReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
+		002C42B629D6404900673F85 /* LevelUpPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelUpPopup.swift; sourceTree = "<group>"; };
 		00687E3129D5EC7D000EB61D /* CustomButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonView.swift; sourceTree = "<group>"; };
 		006F189C29B64EEB00740543 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		006F189E29B6591200740543 /* AddCardPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardPopup.swift; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 				000BF80629A83F3D00F4C33D /* EditPopup.swift */,
 				002BF16E29B25D9200AA6D15 /* HomeView.swift */,
 				002BF17029B264F200AA6D15 /* ReviewView.swift */,
+				002C42B629D6404900673F85 /* LevelUpPopup.swift */,
 				00DB0D3329CCC08C00269872 /* ReviewViewModel.swift */,
 				006F189C29B64EEB00740543 /* DetailView.swift */,
 				006F189E29B6591200740543 /* AddCardPopup.swift */,
@@ -323,6 +326,7 @@
 			files = (
 				000BF80E29A83F4000F4C33D /* Persistence.swift in Sources */,
 				000BF80729A83F3D00F4C33D /* EditPopup.swift in Sources */,
+				002C42B729D6404900673F85 /* LevelUpPopup.swift in Sources */,
 				006F189F29B6591200740543 /* AddCardPopup.swift in Sources */,
 				00D31FDD29BF84270007EA83 /* ReviewPopup.swift in Sources */,
 				000BF81129A83F4000F4C33D /* gyrifier.xcdatamodeld in Sources */,
@@ -589,6 +593,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = QCHJWXH5BM;
@@ -596,6 +601,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.slypuffin.gyrifierUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -607,6 +613,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = QCHJWXH5BM;
@@ -614,6 +621,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.slypuffin.gyrifierUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

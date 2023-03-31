@@ -11,6 +11,7 @@ struct ReviewView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @EnvironmentObject var navigator: Navigator
     @StateObject private var model = ReviewViewModel()
+    @State var isLevelUpPopupOpened = false
 
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Card.dateCreated, ascending: true)],
@@ -32,57 +33,69 @@ struct ReviewView: View {
         Spacer()
         if model.isFinished {
             VStack(alignment: .center) {
-                HStack(alignment: .center) {
-                    Text("Congratulations! You finished!")
+                if model.checkForLevelUps(cards: Array(cards)) {
+                    HStack(alignment: .center) {
+                        Text("Level up some cards?")
+                    }
+                    HStack(alignment: .center) {
+                        Button {
+                            self.isLevelUpPopupOpened.toggle()
+                        } label: {
+                            Text("Level Up!")
+                        }
+                        .buttonStyle(.borderedProminent)
+                        .padding()
+                        Button {
+                            navigator.changeView(nextView: .home)
+                        } label: {
+                            Text("No Thanks")
+                        }
+                        .buttonStyle(.borderless)
+                        .padding()
+                    }
+                } else {
+                    HStack(alignment: .center) {
+                        Text("Congratulations! You finished!")
+                    }
                 }
+            }
+            .sheet(isPresented: self.$isLevelUpPopupOpened) {
+                LevelUpPopup(cards: model.returnLevelUps(cards: Array(cards)))
+                    .environment(\.managedObjectContext, viewContext)
+                    .environmentObject(navigator)
             }
             Spacer()
         } else {
             Button {
-                if model.isFlipped {
-                    model.iterateCards(viewContext: viewContext)
-                } else {
-                    model.toggleFlip()
-                }
+                model.tapCard(viewContext: viewContext)
             } label: {
                 HStack(alignment: .center) {
                     VStack(alignment: .center) {
-                        if model.isFlipped {
-                            Text("Back")
-                                .fontWeight(.bold)
-                                .foregroundColor(.white)
-                            if model.isLoading {
-                                Text("Loading...")
-                                    .padding()
-                            } else {
-                                Text(model.currentCard.cardBack ?? "Loading..")
-                                    .foregroundColor(.white)
-                                    .padding()
-                            }
+                        Text(model.getCardHeader())
+                            .fontWeight(.bold)
+                            .foregroundColor(model.getForegroundColor())
+                        if model.isLoading {
+                            Text("Loading...")
+                                .padding()
                         } else {
-                            Text("Front")
-                                .fontWeight(.bold)
-                            if model.isLoading {
-                                Text("Loading...")
-                                    .padding()
-                            } else {
-                                Text(model.currentCard.cardFront ?? "Loading..")
-                                    .padding()
-                            }
+                            Text(model.getCardContent())
+                                .foregroundColor(model.getForegroundColor())
+                                .padding()
                         }
                     }
                 }
                 .padding(30)
                 .background(
                         RoundedRectangle(cornerRadius: 5)
-                            .fill(model.isFlipped ? .blue : .clear)
+                            .fill(model.getBackgroundColor())
                     )
                 .overlay(
-                        RoundedRectangle(cornerRadius: 5)
-                            .stroke(.blue, lineWidth: 2)
+                        RoundedRectangle(cornerRadius: 8)
+                            .stroke(model.getBorderColor(), lineWidth: 2)
                     )
             }
             .onAppear() {
+                // TODO: Merge some of these functions together
                 model.prepareCards(cards: Array(cards))
                 model.setTimeLimit(timeLimit: timeLimit)
                 model.startTimer()

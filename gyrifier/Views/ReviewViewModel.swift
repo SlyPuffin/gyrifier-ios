@@ -87,7 +87,7 @@ class ReviewViewModel: ObservableObject {
     }
     
     func prepareCards(cards: [Card]) {
-        shuffledCards = cards.shuffled()//cards.filter({isStudyDateTodayOrEarlier($0.nextAppearance!)}).shuffled()
+        shuffledCards = cards.filter({isStudyDateTodayOrEarlier($0.nextAppearance!)}).shuffled()
         if (shuffledCards.isEmpty) {
             finishReview()
         }

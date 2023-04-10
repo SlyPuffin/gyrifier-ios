@@ -44,6 +44,7 @@ struct HomeView: View {
                             CustomButtonView("Gyrifier", buttonSize: isPressed ? .half_height : .large, screenSize: geometryReader.size, buttonStyle: .prominent, fontWeight: .thin)
                         }
                         .opacity(isPressed ? 0 : 1)
+                        .buttonStyle(.plain)
                         .animation(Animation.easeIn(duration: isPressed ? 0.0 : 0.6), value: isPressed)
                     }
                     Spacer()
@@ -56,12 +57,14 @@ struct HomeView: View {
                         } label: {
                             CustomButtonView("Review", buttonSize: isLevelUpAvailable ? .large : .double_width, screenSize: geometryReader.size, fontWeight: .medium)
                         }
+                        .buttonStyle(.plain)
                         if isLevelUpAvailable {
                             Button {
                                 self.isLevelUpPopupOpened.toggle()
                             } label: {
                                 CustomButtonView("Level Up", buttonSize: .large, screenSize: geometryReader.size)
                             }
+                            .buttonStyle(.plain)
                         }
                         Spacer()
                     }
@@ -74,11 +77,13 @@ struct HomeView: View {
                             } label: {
                                 CustomButtonView("Add", buttonSize: .half_height, screenSize: geometryReader.size)
                             }
+                            .buttonStyle(.plain)
                             Button {
                                 self.isEditPopupOpened.toggle()
                             } label: {
                                 CustomButtonView("Edit", buttonSize: .half_height, screenSize: geometryReader.size)
                             }
+                            .buttonStyle(.plain)
                         }
                         VStack {
                             Button {
@@ -86,6 +91,7 @@ struct HomeView: View {
                             } label: {
                                 CustomButtonView("Settings", buttonSize: .half_height, screenSize: geometryReader.size)
                             }
+                            .buttonStyle(.plain)
                             Button {
                                 withAnimation {
                                     isPressed.toggle()
@@ -93,6 +99,7 @@ struct HomeView: View {
                             } label: {
                                 CustomButtonView("Close", buttonSize: .half_height, screenSize: geometryReader.size, buttonStyle: .cancel, fontWeight: .medium)
                             }
+                            .buttonStyle(.plain)
                         }
                     }
                     .opacity(isPressed ? 1 : 0)
@@ -103,25 +110,56 @@ struct HomeView: View {
                 }
                 Spacer()
             }
-        }
-        .sheet(isPresented: self.$isReviewPopupOpened) {
-            ReviewPopup()
-                .environmentObject(navigator)
-        }
-        .sheet(isPresented: self.$isAddPopupOpened) {
-            AddCardPopup()
-                .environment(\.managedObjectContext, viewContext)
-                .environmentObject(navigator)
-        }
-        .sheet(isPresented: self.$isEditPopupOpened) {
-            EditPopup()
-                .environment(\.managedObjectContext, viewContext)
-                .environmentObject(navigator)
-        }
-        .sheet(isPresented: self.$isLevelUpPopupOpened) {
-            LevelUpPopup(cards: returnLevelUps(cards: Array(cards)))
-                .environment(\.managedObjectContext, viewContext)
-                .environmentObject(navigator)
+            .sheet(isPresented: self.$isReviewPopupOpened) {
+                #if os(iOS)
+                ReviewPopup()
+                    .environmentObject(navigator)
+                #endif
+                #if os(macOS)
+                ReviewPopup_MacOS()
+                    .environmentObject(navigator)
+                    .frame(width: 300, height: 200)
+                #endif
+            }
+            .sheet(isPresented: self.$isAddPopupOpened) {
+                #if os(iOS)
+                AddCardPopup()
+                    .environment(\.managedObjectContext, viewContext)
+                    .environmentObject(navigator)
+                #endif
+                #if os(macOS)
+                AddCardPopup_MacOS()
+                    .environment(\.managedObjectContext, viewContext)
+                    .environmentObject(navigator)
+                    .frame(width: geometryReader.size.width * 0.8, height: geometryReader.size.height * 0.6)
+                #endif
+            }
+            .sheet(isPresented: self.$isEditPopupOpened) {
+                #if os(iOS)
+                EditPopup()
+                    .environment(\.managedObjectContext, viewContext)
+                    .environmentObject(navigator)
+                #endif
+                #if os(macOS)
+                EditPopup_MacOS()
+                    .environment(\.managedObjectContext, viewContext)
+                    .environmentObject(navigator)
+                    .frame(width: geometryReader.size.width * 0.8, height: geometryReader.size.height * 0.8)
+                #endif
+            }
+            .sheet(isPresented: self.$isLevelUpPopupOpened) {
+                #if os(iOS)
+                LevelUpPopup(cards: returnLevelUps(cards: Array(cards)))
+                    .environment(\.managedObjectContext, viewContext)
+                    .environmentObject(navigator)
+                #endif
+                #if os(macOS)
+                LevelUpPopup_MacOS(cards: returnLevelUps(cards: Array(cards)))
+                    .environment(\.managedObjectContext, viewContext)
+                    .environmentObject(navigator)
+                    .frame(width: geometryReader.size.width * 0.8, height: geometryReader.size.height * 0.6)
+                #endif
+            }
         }
     }
     

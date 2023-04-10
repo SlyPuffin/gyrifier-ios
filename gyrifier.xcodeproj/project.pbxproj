@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		000BF80529A83F3D00F4C33D /* gyrifierApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000BF80429A83F3D00F4C33D /* gyrifierApp.swift */; };
-		000BF80729A83F3D00F4C33D /* EditPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000BF80629A83F3D00F4C33D /* EditPopup.swift */; };
+		000BF80729A83F3D00F4C33D /* EditPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000BF80629A83F3D00F4C33D /* EditPopup.swift */; platformFilter = ios; };
 		000BF80929A83F4000F4C33D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 000BF80829A83F4000F4C33D /* Assets.xcassets */; };
 		000BF80C29A83F4000F4C33D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 000BF80B29A83F4000F4C33D /* Preview Assets.xcassets */; };
 		000BF80E29A83F4000F4C33D /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000BF80D29A83F4000F4C33D /* Persistence.swift */; };
@@ -16,19 +16,25 @@
 		000BF81C29A83F4000F4C33D /* gyrifierTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000BF81B29A83F4000F4C33D /* gyrifierTests.swift */; };
 		000BF82629A83F4000F4C33D /* gyrifierUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000BF82529A83F4000F4C33D /* gyrifierUITests.swift */; };
 		000BF82829A83F4000F4C33D /* gyrifierUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000BF82729A83F4000F4C33D /* gyrifierUITestsLaunchTests.swift */; };
-		002BF16F29B25D9200AA6D15 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002BF16E29B25D9200AA6D15 /* HomeView.swift */; };
+		002B908A29DA15B000680AA5 /* UITestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002B908929DA15B000680AA5 /* UITestView.swift */; };
 		002BF17129B264F200AA6D15 /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002BF17029B264F200AA6D15 /* ReviewView.swift */; };
-		002C42B729D6404900673F85 /* LevelUpPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002C42B629D6404900673F85 /* LevelUpPopup.swift */; };
+		002C42B729D6404900673F85 /* LevelUpPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002C42B629D6404900673F85 /* LevelUpPopup.swift */; platformFilter = ios; };
 		00687E3229D5EC7D000EB61D /* CustomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00687E3129D5EC7D000EB61D /* CustomButtonView.swift */; };
-		006F189D29B64EEB00740543 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006F189C29B64EEB00740543 /* DetailView.swift */; };
-		006F189F29B6591200740543 /* AddCardPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006F189E29B6591200740543 /* AddCardPopup.swift */; };
-		00D2A4EB29CBA72B008452DA /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D31FD829BF7FAE0007EA83 /* Navigator.swift */; };
+		006F189D29B64EEB00740543 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006F189C29B64EEB00740543 /* DetailView.swift */; platformFilter = ios; };
+		006F189F29B6591200740543 /* AddCardPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006F189E29B6591200740543 /* AddCardPopup.swift */; platformFilter = ios; };
+		00BF260729E0A472004B01DE /* ReviewPopup_MacOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007984F629E06AD7008393CD /* ReviewPopup_MacOS.swift */; platformFilters = (macos, ); };
+		00BF260829E0A472004B01DE /* AddCardPopup_MacOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007984F829E07390008393CD /* AddCardPopup_MacOS.swift */; platformFilters = (macos, ); };
+		00BF260929E0A472004B01DE /* EditPopup_MacOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007984FA29E0797D008393CD /* EditPopup_MacOS.swift */; platformFilters = (macos, ); };
+		00BF260A29E0A472004B01DE /* LevelUpPopup_MacOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007984FC29E07DF2008393CD /* LevelUpPopup_MacOS.swift */; platformFilters = (macos, ); };
+		00BF260B29E0A472004B01DE /* DetailView_MacOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0005274029E0803C0068FD11 /* DetailView_MacOS.swift */; platformFilters = (macos, ); };
+		00BF260C29E0A472004B01DE /* DesktopCustomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EED84A29DBD51200176113 /* DesktopCustomButtonView.swift */; platformFilters = (macos, ); };
 		00D2A4EC29CBA9F3008452DA /* ReviewPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D31FDC29BF84270007EA83 /* ReviewPopup.swift */; };
 		00D31FD929BF7FAE0007EA83 /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D31FD829BF7FAE0007EA83 /* Navigator.swift */; };
-		00D31FDD29BF84270007EA83 /* ReviewPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D31FDC29BF84270007EA83 /* ReviewPopup.swift */; };
-		00D31FDF29BFA06A0007EA83 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D31FDE29BFA06A0007EA83 /* ViewExtension.swift */; };
+		00D31FDD29BF84270007EA83 /* ReviewPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D31FDC29BF84270007EA83 /* ReviewPopup.swift */; platformFilter = ios; };
+		00D31FDF29BFA06A0007EA83 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D31FDE29BFA06A0007EA83 /* ViewExtension.swift */; platformFilter = ios; };
 		00DB0D3429CCC08C00269872 /* ReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DB0D3329CCC08C00269872 /* ReviewViewModel.swift */; };
 		00E32C3B29CD0A96006467C9 /* coreDataTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E32C3A29CD0A96006467C9 /* coreDataTestHelpers.swift */; };
+		00EED84D29DBD57300176113 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002BF16E29B25D9200AA6D15 /* HomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +55,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0005274029E0803C0068FD11 /* DetailView_MacOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView_MacOS.swift; sourceTree = "<group>"; };
 		000BF80129A83F3D00F4C33D /* gyrifier.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gyrifier.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		000BF80429A83F3D00F4C33D /* gyrifierApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gyrifierApp.swift; sourceTree = "<group>"; };
 		000BF80629A83F3D00F4C33D /* EditPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPopup.swift; sourceTree = "<group>"; };
@@ -62,17 +69,23 @@
 		000BF82129A83F4000F4C33D /* gyrifierUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = gyrifierUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		000BF82529A83F4000F4C33D /* gyrifierUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gyrifierUITests.swift; sourceTree = "<group>"; };
 		000BF82729A83F4000F4C33D /* gyrifierUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gyrifierUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		002B908929DA15B000680AA5 /* UITestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestView.swift; sourceTree = "<group>"; };
 		002BF16E29B25D9200AA6D15 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		002BF17029B264F200AA6D15 /* ReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
 		002C42B629D6404900673F85 /* LevelUpPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelUpPopup.swift; sourceTree = "<group>"; };
 		00687E3129D5EC7D000EB61D /* CustomButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonView.swift; sourceTree = "<group>"; };
 		006F189C29B64EEB00740543 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		006F189E29B6591200740543 /* AddCardPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardPopup.swift; sourceTree = "<group>"; };
+		007984F629E06AD7008393CD /* ReviewPopup_MacOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewPopup_MacOS.swift; sourceTree = "<group>"; };
+		007984F829E07390008393CD /* AddCardPopup_MacOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardPopup_MacOS.swift; sourceTree = "<group>"; };
+		007984FA29E0797D008393CD /* EditPopup_MacOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPopup_MacOS.swift; sourceTree = "<group>"; };
+		007984FC29E07DF2008393CD /* LevelUpPopup_MacOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelUpPopup_MacOS.swift; sourceTree = "<group>"; };
 		00D31FD829BF7FAE0007EA83 /* Navigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
 		00D31FDC29BF84270007EA83 /* ReviewPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewPopup.swift; sourceTree = "<group>"; };
 		00D31FDE29BFA06A0007EA83 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		00DB0D3329CCC08C00269872 /* ReviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewModel.swift; sourceTree = "<group>"; };
 		00E32C3A29CD0A96006467C9 /* coreDataTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = coreDataTestHelpers.swift; sourceTree = "<group>"; };
+		00EED84A29DBD51200176113 /* DesktopCustomButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopCustomButtonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,8 +136,10 @@
 		000BF80329A83F3D00F4C33D /* gyrifier */ = {
 			isa = PBXGroup;
 			children = (
+				002BF16D29B25CE000AA6D15 /* Views_iOS */,
+				007984F529E06AAC008393CD /* Views_MacOS */,
 				00D31FD729BF7FA20007EA83 /* Components */,
-				002BF16D29B25CE000AA6D15 /* Views */,
+				00687E3029D5EC5D000EB61D /* ComponentViews */,
 				000BF80429A83F3D00F4C33D /* gyrifierApp.swift */,
 				000BF80829A83F4000F4C33D /* Assets.xcassets */,
 				000BF80D29A83F4000F4C33D /* Persistence.swift */,
@@ -161,10 +176,10 @@
 			path = gyrifierUITests;
 			sourceTree = "<group>";
 		};
-		002BF16D29B25CE000AA6D15 /* Views */ = {
+		002BF16D29B25CE000AA6D15 /* Views_iOS */ = {
 			isa = PBXGroup;
 			children = (
-				00687E3029D5EC5D000EB61D /* ComponentViews */,
+				00D31FDE29BFA06A0007EA83 /* ViewExtension.swift */,
 				000BF80629A83F3D00F4C33D /* EditPopup.swift */,
 				002BF16E29B25D9200AA6D15 /* HomeView.swift */,
 				002BF17029B264F200AA6D15 /* ReviewView.swift */,
@@ -173,23 +188,36 @@
 				006F189C29B64EEB00740543 /* DetailView.swift */,
 				006F189E29B6591200740543 /* AddCardPopup.swift */,
 				00D31FDC29BF84270007EA83 /* ReviewPopup.swift */,
+				002B908929DA15B000680AA5 /* UITestView.swift */,
 			);
-			path = Views;
+			path = Views_iOS;
 			sourceTree = "<group>";
 		};
 		00687E3029D5EC5D000EB61D /* ComponentViews */ = {
 			isa = PBXGroup;
 			children = (
 				00687E3129D5EC7D000EB61D /* CustomButtonView.swift */,
+				00EED84A29DBD51200176113 /* DesktopCustomButtonView.swift */,
 			);
 			path = ComponentViews;
+			sourceTree = "<group>";
+		};
+		007984F529E06AAC008393CD /* Views_MacOS */ = {
+			isa = PBXGroup;
+			children = (
+				007984F629E06AD7008393CD /* ReviewPopup_MacOS.swift */,
+				007984F829E07390008393CD /* AddCardPopup_MacOS.swift */,
+				007984FA29E0797D008393CD /* EditPopup_MacOS.swift */,
+				007984FC29E07DF2008393CD /* LevelUpPopup_MacOS.swift */,
+				0005274029E0803C0068FD11 /* DetailView_MacOS.swift */,
+			);
+			path = Views_MacOS;
 			sourceTree = "<group>";
 		};
 		00D31FD729BF7FA20007EA83 /* Components */ = {
 			isa = PBXGroup;
 			children = (
 				00D31FD829BF7FAE0007EA83 /* Navigator.swift */,
-				00D31FDE29BFA06A0007EA83 /* ViewExtension.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -324,17 +352,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00BF260729E0A472004B01DE /* ReviewPopup_MacOS.swift in Sources */,
+				00BF260829E0A472004B01DE /* AddCardPopup_MacOS.swift in Sources */,
+				00BF260929E0A472004B01DE /* EditPopup_MacOS.swift in Sources */,
+				00BF260A29E0A472004B01DE /* LevelUpPopup_MacOS.swift in Sources */,
+				00BF260B29E0A472004B01DE /* DetailView_MacOS.swift in Sources */,
+				00BF260C29E0A472004B01DE /* DesktopCustomButtonView.swift in Sources */,
 				000BF80E29A83F4000F4C33D /* Persistence.swift in Sources */,
 				000BF80729A83F3D00F4C33D /* EditPopup.swift in Sources */,
 				002C42B729D6404900673F85 /* LevelUpPopup.swift in Sources */,
+				00EED84D29DBD57300176113 /* HomeView.swift in Sources */,
 				006F189F29B6591200740543 /* AddCardPopup.swift in Sources */,
 				00D31FDD29BF84270007EA83 /* ReviewPopup.swift in Sources */,
 				000BF81129A83F4000F4C33D /* gyrifier.xcdatamodeld in Sources */,
 				00D31FD929BF7FAE0007EA83 /* Navigator.swift in Sources */,
 				00D31FDF29BFA06A0007EA83 /* ViewExtension.swift in Sources */,
 				006F189D29B64EEB00740543 /* DetailView.swift in Sources */,
-				002BF16F29B25D9200AA6D15 /* HomeView.swift in Sources */,
 				002BF17129B264F200AA6D15 /* ReviewView.swift in Sources */,
+				002B908A29DA15B000680AA5 /* UITestView.swift in Sources */,
 				00687E3229D5EC7D000EB61D /* CustomButtonView.swift in Sources */,
 				00DB0D3429CCC08C00269872 /* ReviewViewModel.swift in Sources */,
 				000BF80529A83F3D00F4C33D /* gyrifierApp.swift in Sources */,
@@ -348,7 +383,6 @@
 				000BF81C29A83F4000F4C33D /* gyrifierTests.swift in Sources */,
 				00D2A4EC29CBA9F3008452DA /* ReviewPopup.swift in Sources */,
 				00E32C3B29CD0A96006467C9 /* coreDataTestHelpers.swift in Sources */,
-				00D2A4EB29CBA72B008452DA /* Navigator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,6 +530,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"gyrifier/Preview Content\"";
@@ -514,6 +549,10 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.slypuffin.gyrifier;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -525,6 +564,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"gyrifier/Preview Content\"";
@@ -543,6 +583,10 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.slypuffin.gyrifier;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

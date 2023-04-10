@@ -60,9 +60,18 @@ struct ReviewView: View {
                 }
             }
             .sheet(isPresented: self.$isLevelUpPopupOpened) {
+                #if os(iOS)
                 LevelUpPopup(cards: model.returnLevelUps(cards: Array(cards)))
                     .environment(\.managedObjectContext, viewContext)
                     .environmentObject(navigator)
+                #endif
+                #if os(macOS)
+                // TODO: Add geometry reader so we can use frame better here
+                LevelUpPopup_MacOS(cards: model.returnLevelUps(cards: Array(cards)))
+                    .environment(\.managedObjectContext, viewContext)
+                    .environmentObject(navigator)
+                    .frame(width: 500, height: 400)
+                #endif
             }
             Spacer()
         } else {
@@ -94,6 +103,7 @@ struct ReviewView: View {
                             .stroke(model.getBorderColor(), lineWidth: 2)
                     )
             }
+            .buttonStyle(.plain)
             .onAppear() {
                 // TODO: Merge some of these functions together
                 model.prepareCards(cards: Array(cards))

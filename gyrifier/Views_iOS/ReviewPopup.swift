@@ -148,7 +148,7 @@ struct ReviewPopup: View {
     }
 }
 
-struct HomePopup_Previews: PreviewProvider {
+struct ReviewPopup_Previews: PreviewProvider {
     static var previews: some View {
         ReviewPopup()
     }

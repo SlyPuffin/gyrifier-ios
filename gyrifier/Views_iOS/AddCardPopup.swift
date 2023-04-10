@@ -88,7 +88,7 @@ struct AddCardPopup: View {
     }
 }
 
-struct AddCardView_Previews: PreviewProvider {
+struct AddCardPopup_Previews: PreviewProvider {
     static var previews: some View {
         AddCardPopup().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }

@@ -97,7 +97,7 @@ private let itemFormatter: DateFormatter = {
     return formatter
 }()
 
-struct EditView_Previews: PreviewProvider {
+struct EditPopup_Previews: PreviewProvider {
     static var previews: some View {
         EditPopup().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }

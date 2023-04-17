@@ -78,30 +78,7 @@ struct ReviewView: View {
             Button {
                 model.tapCard(viewContext: viewContext)
             } label: {
-                HStack(alignment: .center) {
-                    VStack(alignment: .center) {
-                        Text(model.getCardHeader())
-                            .fontWeight(.bold)
-                            .foregroundColor(model.getForegroundColor())
-                        if model.isLoading {
-                            Text("Loading...")
-                                .padding()
-                        } else {
-                            Text(model.getCardContent())
-                                .foregroundColor(model.getForegroundColor())
-                                .padding()
-                        }
-                    }
-                }
-                .padding(30)
-                .background(
-                        RoundedRectangle(cornerRadius: 5)
-                            .fill(model.getBackgroundColor())
-                    )
-                .overlay(
-                        RoundedRectangle(cornerRadius: 8)
-                            .stroke(model.getBorderColor(), lineWidth: 2)
-                    )
+                FlashCardView(text: model.getCardContent(), backgroundColor: model.getCardBackgroundColor(), header: model.getCardHeader())
             }
             .buttonStyle(.plain)
             .onAppear() {

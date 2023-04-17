@@ -9,15 +9,15 @@ import Foundation
 import CoreData
 import SwiftUI
 
-enum FlippedStatus {
-    case front, back, expansion_1//, expansion_2, expansion_3
+enum CardSide {
+    case front, back, expansion_1, expansion_2, expansion_3
 }
 
 class ReviewViewModel: ObservableObject {
     @Published var isFinished = false
     @Published var currentCard: Card = Card()
     @Published var isLoading = true
-    @Published var flippedStatus: FlippedStatus = .front
+    @Published var cardSide: CardSide = .front
     private var shuffledCards: [Card] = []
     private var timer: Timer?
     private var currentIndex = 0
@@ -27,59 +27,65 @@ class ReviewViewModel: ObservableObject {
     private var startTime = 0.0
     private var stopTime = 0.0
     
-    func getBackgroundColor() -> Color {
-        switch flippedStatus {
-        case .front:
-            return .clear
-        case .back:
-            return .blue
-        case .expansion_1:
-            return .mint
-        }
-    }
-    
-    func getForegroundColor() -> Color {
-        switch flippedStatus {
-        case .front:
-            return .blue
-        case .back:
-            return .white
-        case .expansion_1:
-            return .black
-        }
-    }
-
-    func getBorderColor() -> Color {
-        switch flippedStatus {
-        case .front:
-            return .blue
-        case .back:
-            return .clear
-        case .expansion_1:
-            return .clear
-        }
-    }
-    
-    func getCardHeader() -> String {
-        switch flippedStatus {
-        case .front:
-            return "Front"
-        case .back:
-            return "Back"
-        case .expansion_1:
-            return "Expansion"
-        }
-    }
-    
     func getCardContent() -> String {
-        switch flippedStatus {
+        if isLoading {
+            return "Loading..."
+        }
+        switch cardSide {
         case .front:
             return currentCard.cardFront ?? "Loading..."
         case .back:
             return currentCard.cardBack ?? "Loading..."
+        case .expansion_3:
+            return currentCard.expansion_3 ?? "Loading..."
+        case .expansion_2:
+            return currentCard.expansion_22 ?? "Loading..."
         case .expansion_1:
             return currentCard.expansion_1 ?? "Loading..."
         }
+    }
+    
+    func getCardHeader() -> String {
+        switch cardSide {
+        case .front:
+            return "Front"
+        case .back:
+            return "Back"
+        case .expansion_3:
+            return "Expansion 3"
+        case .expansion_2:
+            return "Expansion 2"
+        case .expansion_1:
+            return currentCard.level == 2 ? "Expansion" : "Expansion 2"
+        }
+    }
+    
+    func getCardBackgroundColor() -> Color {
+        if isLoading {
+            return Color("lvl_1_front")
+        }
+        switch cardSide {
+        case .front:
+            if currentCard.level == 1 { return Color("lvl_1_front") }
+            if currentCard.level == 2 { return Color("lvl_2_front") }
+            if currentCard.level == 3 { return Color("lvl_3_front") }
+            if currentCard.level == 4 { return Color("lvl_4_front") }
+        case .back:
+            if currentCard.level == 1 { return Color("lvl_1_back") }
+            if currentCard.level == 2 { return Color("lvl_2_back") }
+            if currentCard.level == 3 { return Color("lvl_3_back") }
+            if currentCard.level == 4 { return Color("lvl_4_back") }
+        case .expansion_3:
+            return Color("lvl_4_expansion_3")
+        case .expansion_2:
+            if currentCard.level == 3 { return Color("lvl_3_expansion_2") }
+            if currentCard.level == 4 { return Color("lvl_4_expansion_2") }
+        case .expansion_1:
+            if currentCard.level == 2 { return Color("lvl_2_expansion") }
+            if currentCard.level == 3 { return Color("lvl_3_expansion_1") }
+            if currentCard.level == 4 { return Color("lvl_4_expansion_1") }
+        }
+        return Color("lvl_1_front")
     }
     
     func setTimeLimit(timeLimit: Double) {
@@ -99,15 +105,23 @@ class ReviewViewModel: ObservableObject {
     }
     
     func tapCard(viewContext: NSManagedObjectContext) {
-        switch flippedStatus {
+        switch cardSide {
         case .front:
-            if (currentCard.level >= 2) {
-                changeFlippedStatus(.expansion_1)
+            if (currentCard.level >= 4) {
+                changeCardSide(.expansion_3)
+            } else if (currentCard.level >= 3) {
+                changeCardSide(.expansion_2)
+            } else if (currentCard.level >= 2) {
+                changeCardSide(.expansion_1)
             } else {
-                changeFlippedStatus(.back)
+                changeCardSide(.back)
             }
+        case .expansion_3:
+            changeCardSide(.expansion_2)
+        case .expansion_2:
+            changeCardSide(.expansion_1)
         case .expansion_1:
-            changeFlippedStatus(.back)
+            changeCardSide(.back)
         case .back:
             iterateCards(viewContext: viewContext)
         }
@@ -132,13 +146,12 @@ class ReviewViewModel: ObservableObject {
         return cards.filter({canCardLevelUp(card: $0)}).shuffled()
     }
     
-    func changeFlippedStatus(_ fs: FlippedStatus) {
-        flippedStatus = fs
+    private func changeCardSide(_ cs: CardSide) {
+        cardSide = cs
     }
     
     private func canCardLevelUp(card: Card) -> Bool {
-        return (card.level == 1 && card.experiencePoints == 3)
-//        return ((card.level == 1 && card.experiencePoints == 3) || (card.level == 2 && card.experiencePoints == 8) || (card.level == 3 && card.experiencePoints == 15) || (card.level == 4 && card.experiencePoints == 25))
+        return ((card.level == 1 && card.experiencePoints == 3) || (card.level == 2 && card.experiencePoints == 8) || (card.level == 3 && card.experiencePoints == 15) || (card.level == 4 && card.experiencePoints == 25))
     }
     
     private func iterateCards(viewContext: NSManagedObjectContext) {
@@ -148,7 +161,7 @@ class ReviewViewModel: ObservableObject {
             finishReview()
         } else {
             currentCard = shuffledCards[currentIndex]
-            changeFlippedStatus(.front)
+            changeCardSide(.front)
         }
     }
     
@@ -191,6 +204,22 @@ class ReviewViewModel: ObservableObject {
     private func experiencePointsFor(card: Card) -> Int16 {
         if card.experiencePoints < 3 {
             return card.experiencePoints + 1
+        }
+        else if card.level == 4 {
+            if card.experiencePoints < 25 {
+                return card.experiencePoints + 1
+            }
+            else {
+                return 25
+            }
+        }
+        else if card.level == 3 {
+            if card.experiencePoints < 15 {
+                return card.experiencePoints + 1
+            }
+            else {
+                return 15
+            }
         }
         else if card.level == 2 {
             if card.experiencePoints < 8 {

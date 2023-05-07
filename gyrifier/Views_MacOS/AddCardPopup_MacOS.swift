@@ -46,13 +46,22 @@ struct AddCardPopup_MacOS: View {
             Text("Card Front")
             TextEditor(text: $cardFrontText)
                 .multilineTextAlignment(.center)
+                .overlay(
+                         RoundedRectangle(cornerRadius: 2)
+                           .stroke(Color.blue, lineWidth: 2)
+                         )
                 .padding(.bottom)
-                .padding(.horizontal)
+                .padding(.horizontal, 30)
             Text("Card Back")
                 .padding(.top)
             TextEditor(text: $cardBackText)
                 .multilineTextAlignment(.center)
-                .padding(.horizontal)
+                .overlay(
+                         RoundedRectangle(cornerRadius: 2)
+                           .stroke(Color.blue, lineWidth: 2)
+                         )
+                .padding(.horizontal, 30)
+                .padding(.bottom, 20)
         }
         .padding(.bottom)
     }

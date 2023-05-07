@@ -42,14 +42,23 @@ struct AddCardPopup: View {
             TextEditor(text: $cardFrontText)
                 .hideKeyboardWhenTappedAround()
                 .multilineTextAlignment(.center)
+                .overlay(
+                         RoundedRectangle(cornerRadius: 10)
+                           .stroke(Color.blue, lineWidth: 2)
+                         )
                 .padding(.bottom)
-                .padding(.horizontal)
+                .padding(.horizontal, 30)
             Text("Card Back")
                 .padding(.top)
             TextEditor(text: $cardBackText)
                 .hideKeyboardWhenTappedAround()
                 .multilineTextAlignment(.center)
-                .padding(.horizontal)
+                .overlay(
+                         RoundedRectangle(cornerRadius: 10)
+                           .stroke(Color.blue, lineWidth: 2)
+                         )
+                .padding(.horizontal, 30)
+                .padding(.bottom, 20)
         }
     }
     
